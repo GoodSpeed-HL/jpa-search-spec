@@ -1,0 +1,21 @@
+package com.example.demo;
+
+import net.kaczmarzyk.spring.data.jpa.web.SpecificationArgumentResolver;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.AbstractApplicationContext;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.web.method.support.HandlerMethodArgumentResolver;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import java.util.List;
+
+@Configuration
+@EnableJpaRepositories
+public class SpecConfig implements WebMvcConfigurer {
+
+    @Override
+    public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
+        argumentResolvers.add(new SpecificationArgumentResolver());
+    }
+}
